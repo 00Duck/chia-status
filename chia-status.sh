@@ -42,13 +42,10 @@ json=$( jq -n \
 	'{walletSyncStatus: $wss, walletAddress: $wa, walletHeight: $wh, totalBalance: $tb, pendingTotalBalance: $ptb, spendable: $sp, chiaVersion: $v, farmSummary: $fs, chiaState: $cs, connections: $con}' )
 
 
-printf "$json"
-
 curl "$host" \
 	--request POST \
-	--header "Accept:application/json" \
-	--header "Content-Type:application/json" \
+	--header "Accept: application/json" \
+	--header "Content-Type: application/json" \
 	--data "$json" \
-	--user "$user":"$pw"
-
+	--user "$user:$pw"
 exit
